@@ -27,17 +27,17 @@ pipeline {
             }
         }
         
-        stage('Package') {
-        		steps {
-                echo "Build the code"
-                bat "mvn package"
-            }
-        }
-        
         stage('Test Cases') {
         		steps {
                 echo "Run Test Cases"
                 bat "mvn test"
+            }
+        }
+        
+        stage('Build') {
+        		steps {
+                echo "Build the code"
+                bat "mvn package"
             }
         }
         
