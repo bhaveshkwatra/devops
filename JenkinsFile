@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "Maven_Home"
+    }
+    
+    options {
+        timestamps()
+        
+        skipDefaultCheckout()        
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo "Checkout from Git Master Branch"
+                checkout scm
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                echo "Compile the code"
+                bat "mvn compile"
+            }
+
+        }
+            
+            
+        }
+        
+}
