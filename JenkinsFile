@@ -47,12 +47,9 @@ pipeline {
                 			echo "Sonar Analysis"
                 			bat "mvn sonar:sonar"
                 		}
-            }
-        }
-        
-        
+            	}
+        }    
             
-            
-        }
+     }
         
 }
