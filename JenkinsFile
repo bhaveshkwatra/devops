@@ -37,7 +37,7 @@ pipeline {
         stage('Build') {
         		steps {
                 echo "Build the code"
-                bat "mvn package"
+                bat "mvn install"
             }
         }
         
