@@ -23,10 +23,34 @@ pipeline {
         stage('Compile') {
             steps {
                 echo "Compile the code"
-                bat "mvn compile"
+                bat "mvn clean compile"
             }
-
         }
+        
+        stage('Package') {
+        		steps {
+                echo "Build the code"
+                bat "mvn package"
+            }
+        }
+        
+        stage('Test Cases') {
+        		steps {
+                echo "Run Test Cases"
+                bat "mvn test"
+            }
+        }
+        
+        stage('Sonar Analysis') {
+        		steps {
+                		withSonarQubeEnv("SonarQubeDefault") {
+                			echo "Sonar Analysis"
+                			bat "mvn sonar:sonar"
+                		}
+            }
+        }
+        
+        
             
             
         }
