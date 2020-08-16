@@ -4,7 +4,6 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "Maven_Home"
-        docker "Docker"
     }
     
     options {
@@ -74,7 +73,7 @@ pipeline {
         
         stage('Docker Images') {
         		steps {
-						bat "docker built -t bhaveshkwatra/devops-demo --no-cache -f Dockerfile ."			    
+						bat "docker built -t bhaveshkwatra/devops-demo:${BUILD_NUMBER} --no-cache -f Dockerfile ."			    
             	}
         }
             
