@@ -74,7 +74,7 @@ pipeline {
         
         stage('Docker Images') {
         		steps {
-						bat "docker built bhaveshkwatra/devops-demo --no-cache -f Dockerfile ."			    
+						bat "docker built -t bhaveshkwatra/devops-demo --no-cache -f Dockerfile ."			    
             	}
         }
             
