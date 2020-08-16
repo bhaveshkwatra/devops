@@ -4,6 +4,7 @@ pipeline {
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "Maven_Home"
+        docker "Docker"
     }
     
     options {
@@ -68,6 +69,12 @@ pipeline {
     							serverId: "Artifactory"
 						)		    
 									    
+            	}
+        }
+        
+        stage('Docker Images') {
+        		steps {
+						bat "docker built bhaveshkwatra/devops-demo --no-cache -f Dockerfile ."			    
             	}
         }
             
