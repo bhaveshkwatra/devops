@@ -94,7 +94,7 @@ pipeline {
         		steps {
         				script {
         						echo "Start Docker ps"
-        						def containerId = bat(returnStdout: true, script: 'docker ps -qf "expose=8056"').trim()
+        						def containerId = bat(script: 'docker ps -qf "expose=8056"', returnStdout: true)
         						echo "Container Id $containerId"	
         				}
             	}
