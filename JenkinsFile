@@ -94,7 +94,9 @@ pipeline {
         stage('Stop Pre-existing Container') {
         		steps {
         				script {
-          					containerId = bat(returnStdout: true, script: 'echo 0.0.1')
+          					containerId = bat(returnStdout: true, script: 'docker ps -qf "expose=8056"')
+          					echo ${containerId}
+          					
         				}
             	}
         }
