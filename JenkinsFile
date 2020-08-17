@@ -97,7 +97,7 @@ pipeline {
         						echo "Start Docker ps"
         						containerId = bat(returnStdout: true, script: 'docker ps -qf "expose=8056"')
         						echo "Container Id ${containerId}"
-        						if (containerId) {
+        						if (containerId.length() != 0) {
         							echo ${containerId}
         							echo "Cinater id Exit"
         							bat "docker container stop ${containerId}"
