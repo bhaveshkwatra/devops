@@ -89,6 +89,17 @@ pipeline {
         				}
             	}
         }
+        
+        stage('Stop Pre-existing Container') {
+        		steps {
+						$container_id = docker ps -qf expose=8056
+						echo $container_id;
+						if ($container_id) {
+							$container_id = docker container stop $container_id
+							echo "Stop the container "+$container_id
+						}		    
+            	}
+        }
             
      }
         
