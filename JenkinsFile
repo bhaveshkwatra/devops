@@ -82,8 +82,8 @@ pipeline {
         
         stage('Push Docker Image') {
         		steps {
-        				docker.withRegistry( 'https://hub.docker.com', registryCredential ) {
-            				bat "docker push bhaveshkwatra/devops-demo:${BUILD_NUMBER}"	
+        				docker.withRegistry('', registryCredential ) {
+            				//bat "docker push bhaveshkwatra/devops-demo:${BUILD_NUMBER}"	
           				}
             	}
         }
