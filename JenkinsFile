@@ -93,9 +93,12 @@ pipeline {
         
         stage('Stop Pre-existing Container') {
         		steps {
-        				script {
-        					echo $containerId
-        				}
+        				${containerId} = docker ps -qf "expose=8056"
+						echo ${containerId};
+						if (${containerId}) {
+							${containerId} = docker container stop $containerId
+							echo "Stop the container "+${containerId}
+						}
             	}
         }
             
