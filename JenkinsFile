@@ -93,7 +93,10 @@ pipeline {
         
         stage('Stop Pre-existing Container') {
         		steps {
-        				${containerId} = bat(returnStdout: true, script: 'docker ps -qf "expose=8056"')
+        				${containerId} = """${bat(
+                returnStdout: true,
+                script: 'echo "clang"'
+            )}"""
 						echo ${containerId};
             	}
         }
