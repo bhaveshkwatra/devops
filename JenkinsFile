@@ -82,9 +82,11 @@ pipeline {
         
         stage('Push Docker Image') {
         		steps {
-        				docker.withRegistry('', registryCredential ) {
-            				//bat "docker push bhaveshkwatra/devops-demo:${BUILD_NUMBER}"	
-          				}
+        				script {
+        						docker.withRegistry('', registryCredential ) {
+            						bat "docker push bhaveshkwatra/devops-demo:${BUILD_NUMBER}"	
+          						}	
+        				}
             	}
         }
             
