@@ -94,7 +94,7 @@ pipeline {
         stage('Stop Pre-existing Container') {
         		when  {
         				 		expression {
-        				 		containerId = bat(returnStdout: true, script: 'docker ps -qf "expose=8056"').trim()
+        				 		containerId = bat(returnStdout: true, script: 'docker ps -qf expose=8056').trim()
         				 		return containerId
         				 		}
         				 }
