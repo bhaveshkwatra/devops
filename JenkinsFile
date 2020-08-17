@@ -95,8 +95,11 @@ pipeline {
         		steps {
         				script {
           					containerId = bat(returnStdout: true, script: 'docker ps -qf "expose=8056"')
-          					if(containerId) {
-        				 	bat "docker ps -a"
+        				 }
+        				 
+        				 script {
+        				 if(containerId) {
+        				 	bat "docker container stop ${containerId}"
         				 }
         				}
             	}
