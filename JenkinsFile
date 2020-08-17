@@ -1,7 +1,6 @@
 pipeline {
 	environment {
 	registryCredential = 'Docker_Hub'
-	containerId=''
 	}	
     agent any
 
@@ -95,13 +94,8 @@ pipeline {
         		steps {
         				script {
         						echo "Start Docker ps"
-        						containerId = bat(returnStdout: true, returnStatus:true, script: 'docker ps -qf "expose=8056"')
-        						echo "Container Id ${containerId}"
-        						if (containerId.length() != 0) {
-        							echo "ssjsjjs"+containerId.length()
-        							echo "Cinater id Exit"
-        							bat "docker container stop ${containerId}"
-        						}
+        						def containerId = bat(returnStdout: true, script: 'docker ps -qf "expose=8056"')
+        						echo "Container Id $containerId"	
         				}
             	}
         }
