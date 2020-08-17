@@ -1,4 +1,7 @@
 pipeline {
+	environment {
+	registryCredential = 'Docker_Hub'
+	}	
     agent any
 
     tools {
@@ -71,9 +74,15 @@ pipeline {
             	}
         }
         
-        stage('Docker Images') {
+        stage('Build Docker Image') {
         		steps {
 						bat "docker build -t bhaveshkwatra/devops-demo:${BUILD_NUMBER} --no-cache -f Dockerfile ."			    
+            	}
+        }
+        
+        stage('Push Docker Image') {
+        		steps {
+						bat "docker push bhaveshkwatra/devops-demo:${BUILD_NUMBER}"			    
             	}
         }
             
