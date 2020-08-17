@@ -14,7 +14,7 @@ pipeline {
     options {
         timestamps()
         skipDefaultCheckout()        
-        buildDiscarder((logRotator(daysToKeepStr:'10', numToKeepStr:'10')) 
+        buildDiscarder((logRotator(daysToKeepStr:'10', numToKeepStr:'10'))) 
     }
 
     stages {
