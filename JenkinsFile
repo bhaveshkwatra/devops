@@ -95,9 +95,8 @@ pipeline {
         		steps {
         				script {
           					containerId = bat(returnStdout: true, script: 'docker ps -qf "expose=8056"')
-          					echo ${containerId}
-          					
         				}
+        				echo ${containerId}
             	}
         }
             
