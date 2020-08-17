@@ -93,11 +93,9 @@ pipeline {
         
         stage('Stop Pre-existing Container') {
         		steps {
-        				${containerId} = """${bat(
-                returnStdout: true,
-                script: 'echo "clang"'
-            )}"""
-						echo ${containerId};
+        				script {
+          					containerId = bat(returnStdout: true, script: 'echo 0.0.1')
+        				}
             	}
         }
             
