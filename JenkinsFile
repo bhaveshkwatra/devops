@@ -94,7 +94,7 @@ pipeline {
         stage('Stop Pre-existing Container') {
         		steps {
         				script {
-        					echo containerId
+        					echo $containerId
         				}
             	}
         }
