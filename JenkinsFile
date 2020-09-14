@@ -92,11 +92,13 @@ pipeline {
         
         stage('Stop Pre-existing Container') {
         		steps {
-        				script {
-        						echo "Start Docker ps"
-        						def containerId = bat(script: 'docker ps -qf "expose=8056"', returnStdout: true)
-        						bat "helm version"
-        				}
+        				bat "(docker stop devops-assign || (exit 0)) && (docker rm devops-assign || (exit 0))"
+            	}
+        }
+        
+         stage('Start the Container') {
+        		steps {
+        				bat "docker run --name devops-assign -p 8056:8056 bhaveshkwatra/devops-demo:${BUILD_NUMBER}"
             	}
         }
             
