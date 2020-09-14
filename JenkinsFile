@@ -95,7 +95,7 @@ pipeline {
         				script {
         						echo "Start Docker ps"
         						def containerId = bat(script: 'docker ps -qf "expose=8056"', returnStdout: true)
-        						echo containerId	
+        						bat "helm version"
         				}
             	}
         }
