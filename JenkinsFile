@@ -98,7 +98,7 @@ pipeline {
         
          stage('Start the Container') {
         		steps {
-        				bat "docker run --name devops-assign -p 8056:8056 bhaveshkwatra/devops-demo:${BUILD_NUMBER}"
+        				bat "docker run -d --name devops-assign -p 8056:8056 bhaveshkwatra/devops-demo:${BUILD_NUMBER}"
             	}
         }
             
